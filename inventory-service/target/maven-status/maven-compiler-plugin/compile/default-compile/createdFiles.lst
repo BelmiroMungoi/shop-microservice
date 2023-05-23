@@ -1,0 +1,6 @@
+com\bbm\inventoryservice\model\Inventory.class
+com\bbm\inventoryservice\controller\InventoryController.class
+com\bbm\inventoryservice\service\InventoryService.class
+com\bbm\inventoryservice\repository\InventoryRepository.class
+com\bbm\inventoryservice\InventoryServiceApplication.class
+com\bbm\inventoryservice\model\Inventory$InventoryBuilder.class
