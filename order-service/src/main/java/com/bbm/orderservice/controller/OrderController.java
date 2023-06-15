@@ -1,5 +1,7 @@
 package com.bbm.orderservice.controller;
 
+import com.bbm.orderservice.model.dto.OrderRequest;
+import com.bbm.orderservice.service.OrderService;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
 import io.github.resilience4j.timelimiter.annotation.TimeLimiter;
@@ -10,9 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bbm.orderservice.model.dto.OrderRequest;
-import com.bbm.orderservice.service.OrderService;
-
 import lombok.RequiredArgsConstructor;
 
 import java.util.concurrent.CompletableFuture;
@@ -22,7 +21,7 @@ import java.util.concurrent.CompletableFuture;
 @RequiredArgsConstructor
 public class OrderController {
 	
-	private final OrderService orderService; 
+	private final OrderService orderService;
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
