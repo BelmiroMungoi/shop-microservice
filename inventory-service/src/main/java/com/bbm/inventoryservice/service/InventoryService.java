@@ -1,13 +1,11 @@
 package com.bbm.inventoryservice.service;
 
-import com.bbm.inventoryservice.model.Inventory;
 import com.bbm.inventoryservice.model.dto.InventoryResponse;
+import com.bbm.inventoryservice.repository.InventoryRepository;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.bbm.inventoryservice.repository.InventoryRepository;
 
 import lombok.RequiredArgsConstructor;
 
