@@ -4,7 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
+import com.bbm.orderservice.event.OrderPlacedEvent;
 import com.bbm.orderservice.model.dto.InventoryResponse;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,6 +27,8 @@ public class OrderService {
 	private final OrderRepository orderRepository;
 
 	private final WebClient.Builder webClientBuilder;
+
+	private final KafkaTemplate<String, OrderPlacedEvent> kafkaTemplate;
 	
 	public String placeOrder(OrderRequest orderRequest) {
 		Order order = new Order();
@@ -54,6 +58,7 @@ public class OrderService {
 
 		if (allProductsInStock) {
 			orderRepository.save(order);
+			kafkaTemplate.send("notificationTopic",new OrderPlacedEvent(order.getOrderNumber()));
 			return "Pedido realizado com sucesso";
 		} else {
 			throw new IllegalArgumentException("Produto não está no estoque, TENTE NOVAMENTE mais tarde");
