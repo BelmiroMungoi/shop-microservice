@@ -2,6 +2,8 @@ package com.bbm.productservice.controller;
 
 import java.util.List;
 
+import com.bbm.productservice.model.dto.ProductRequest;
+import com.bbm.productservice.model.dto.ProductResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bbm.productservice.model.dto.ProductRequest;
-import com.bbm.productservice.model.dto.ProductResponse;
 import com.bbm.productservice.service.ProductService;
 
 import lombok.RequiredArgsConstructor;

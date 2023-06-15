@@ -2,12 +2,11 @@ package com.bbm.productservice.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import com.bbm.productservice.model.Product;
 import com.bbm.productservice.model.dto.ProductRequest;
 import com.bbm.productservice.model.dto.ProductResponse;
 import com.bbm.productservice.repository.ProductRepository;
+import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -5,18 +5,18 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.math.BigDecimal;
 import java.util.Arrays;
 
-import com.bbm.productservice.controller.ProductController;
+import com.bbm.productservice.model.dto.ProductRequest;
+import com.bbm.productservice.model.dto.ProductResponse;
+import com.bbm.productservice.repository.ProductRepository;
+import com.bbm.productservice.service.ProductService;
 import org.hamcrest.Matchers;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.boot.test.mock.mockito.MockBeans;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
@@ -27,10 +27,6 @@ import org.testcontainers.containers.MongoDBContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-import com.bbm.productservice.model.dto.ProductRequest;
-import com.bbm.productservice.model.dto.ProductResponse;
-import com.bbm.productservice.repository.ProductRepository;
-import com.bbm.productservice.service.ProductService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest
