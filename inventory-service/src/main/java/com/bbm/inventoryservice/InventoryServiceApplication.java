@@ -1,5 +1,6 @@
 package com.bbm.inventoryservice;
 
+import com.bbm.inventoryservice.repository.InventoryRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,7 +8,6 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 
 import com.bbm.inventoryservice.model.Inventory;
-import com.bbm.inventoryservice.repository.InventoryRepository;
 
 @EnableDiscoveryClient
 @SpringBootApplication
