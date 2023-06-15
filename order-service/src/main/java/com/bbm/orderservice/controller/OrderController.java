@@ -1,5 +1,8 @@
 package com.bbm.orderservice.controller;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
+import io.github.resilience4j.timelimiter.annotation.TimeLimiter;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,6 +15,8 @@ import com.bbm.orderservice.service.OrderService;
 
 import lombok.RequiredArgsConstructor;
 
+import java.util.concurrent.CompletableFuture;
+
 @RestController
 @RequestMapping("/api/order")
 @RequiredArgsConstructor
@@ -20,9 +25,17 @@ public class OrderController {
 	private final OrderService orderService; 
 
 	@PostMapping
-	@ResponseStatus(HttpStatus.CREATED)	
-	public String placeOrder(@RequestBody OrderRequest orderRequest) {
-		orderService.placeOrder(orderRequest);
-		return "Pedido realizado com sucesso";
+	@ResponseStatus(HttpStatus.CREATED)
+	@CircuitBreaker(name = "inventory", fallbackMethod = "fallbackMethod")
+	@TimeLimiter(name = "inventory")
+	@Retry(name = "inventory")
+	public CompletableFuture<String> placeOrder(@RequestBody OrderRequest orderRequest) {
+		return CompletableFuture.supplyAsync(() -> orderService.placeOrder(orderRequest));
+	}
+
+	public CompletableFuture<String> fallbackMethod(OrderRequest orderRequest, RuntimeException exception) {
+
+		return CompletableFuture.supplyAsync(() -> "Oops! Aconteceu algum problema, " +
+				"Por favor TENTE NOVAMENTE depois de um TEMPO");
 	}
 }
