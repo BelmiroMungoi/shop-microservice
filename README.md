@@ -10,7 +10,7 @@ The Order Service is a microservice responsible for managing the order lifecycle
  - Order creation and management
  - Order status updates
  - Order history and tracking
- - 
+   
 ### Integration Points:
  - Product Service for product information
  - Inventory Service for product availability
@@ -39,7 +39,7 @@ The Inventory Service is responsible for maintaining real-time inventory informa
 ### Integration Points:
  - Product Service for product details
  - Order Service for order creation and updates
- - 
+  
 ## 4. Notification Service:
 
 The Notification Service plays a crucial role in keeping users informed about their orders and other important events.
